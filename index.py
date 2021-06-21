@@ -5,7 +5,7 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output
 from apps import env,ene,soc
 from app import app
-
+from app import server
 BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
 app = dash.Dash(external_stylesheets=[BS])
 PLOTLY_LOGO="logo.png"
