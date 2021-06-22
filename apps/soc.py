@@ -1,6 +1,3 @@
-import dash
-from datetime import date
-import dash_table
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
@@ -8,16 +5,15 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 import pathlib
+from app import app
 
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
 df=pd.read_csv(DATA_PATH.joinpath("WorldBank_social+.csv"))
 l=df.columns.values.tolist()
-BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
-app = dash.Dash(external_stylesheets=[BS])
-server = app.server
-PLOTLY_LOGO="logo.png"
-layout= html.Div([
+
+layout= \
+html.Div([
 dbc.Row(dbc.Col(html.H3("Social data"))),
 dbc.Row(dbc.Col(html.H5("Select a feature to plot it on the graph"))),
 dbc.Row([dbc.Col(dcc.Dropdown(id='f_dropdown', placeholder='Select a Feature...',
@@ -43,11 +39,11 @@ dbc.Row([dbc.Col(dcc.Dropdown(id='f_dropdown', placeholder='Select a Feature...'
                                 multi=True),
                         width={'size': 3, 'order': 1}
                         )]),
-dbc.Row([dbc.Col(dcc.Graph(id='the_graph'))])
+dbc.Row([dbc.Col(dcc.Graph(id='soc_graph'))])
 ])
 
 @app.callback(
-    Output(component_id='the_graph', component_property='figure'),
+    Output(component_id='soc_graph', component_property='figure'),
     [Input(component_id='f_dropdown', component_property='value'),
      ]
 )
