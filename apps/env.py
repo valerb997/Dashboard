@@ -30,7 +30,8 @@ html.Div([
                                 multi=True),
                         width={'size': 3, 'order': 1}
                         )]),
-dbc.Row([dbc.Col(dcc.Graph(id='env_graph'))])
+dbc.Row([dbc.Col(dcc.Graph(id='env_graph'))]),
+dbc.Row(dbc.Col(html.H6("Please note that not all the data were available in the same time frame: the unavailable data are equal to 0")))
 ])
 
 @app.callback(

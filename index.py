@@ -8,7 +8,6 @@ from app import app
 from app import server
 # BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
 # app = dash.Dash(external_stylesheets=[BS])
-PLOTLY_LOGO="logo.png"
 navbar= html.Div([
     dbc.NavbarSimple(
     [
@@ -16,7 +15,6 @@ navbar= html.Div([
             # Use row and col to control vertical alignment of logo / brand
             dbc.Row(
                 [
-                    dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
                     dbc.Col(dbc.NavbarBrand("Senegal Dashboard", className="ml-2",href="/")),
                     dbc.Col(dbc.NavItem(dbc.NavLink("Environment", href="/environment"))),
                     dbc.Col(dbc.NavItem(dbc.NavLink("Social", href="/social"))),
@@ -50,6 +48,7 @@ def render_page_content(pathname):
         return [
                 html.H1('Welcome to our Senegal Dashboard!',
                         style={'textAlign':'center'}),
+                # html.Img(src=app.get_asset_url('DSC_0011.jpg'))
                 ]
     elif pathname == "/environment":
         return env.layout
