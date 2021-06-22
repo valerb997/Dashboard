@@ -14,8 +14,10 @@ l=df.columns.values.tolist()
 
 layout= \
 html.Div([
-dbc.Row(dbc.Col(html.H3("Social data"))),
-dbc.Row(dbc.Col(html.H5("Select a feature to plot it on the graph"))),
+dbc.Row(dbc.Col(html.H1("Social data"),
+                style={'textAlign':'center'})),
+dbc.Row(dbc.Col(html.H5("Select a feature to plot it on the graph"),
+                style={'textAlign':'center'})),
 dbc.Row([dbc.Col(dcc.Dropdown(id='f_dropdown', placeholder='Select a Feature...',
                                      options=[{'label': l[1], 'value': l[1]},
                                               {'label': l[2], 'value': l[2]},
