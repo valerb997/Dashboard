@@ -45,12 +45,21 @@ dbc.Row([dbc.Col(dcc.Dropdown(id='f_dropdown', placeholder='Select a Feature...'
                         width={'size': 3, 'order': 1}
                         )]),
 dbc.Row([dbc.Col(dcc.Graph(id='ene_graph'))]),
+# dcc.Slider(
+#         id='ene_slider',
+#         min=df.iloc[0,0],
+#         max=df.iloc[-1,0],
+#         step=1,
+#         value=df.iloc[0,0],
+#         dots=True,
+#     ),
 dbc.Row(dbc.Col(html.H6("Please note that not all the data were available in the same time frame: the unavailable data are equal to 0")))
 ])
 
 @app.callback(
     Output(component_id='ene_graph', component_property='figure'),
     [Input(component_id='f_dropdown', component_property='value'),
+     # Input(component_id="ene_slider",component_property="value"),
      ]
 )
 
