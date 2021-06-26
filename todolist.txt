@@ -1,0 +1,6 @@
+add images to the main page
+add the about
+add the forecast plot + comments
+add the correlation plots + comments
+OPTIONAL
+add the geodata to the main page (see lecture)

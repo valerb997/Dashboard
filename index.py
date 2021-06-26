@@ -19,6 +19,16 @@ navbar= html.Div([
                     dbc.Col(dbc.NavItem(dbc.NavLink("Environment", href="/environment"))),
                     dbc.Col(dbc.NavItem(dbc.NavLink("Social", href="/social"))),
                     dbc.Col(dbc.NavItem(dbc.NavLink("Energy", href="/energy"))),
+                    dbc.Col(dbc.DropdownMenu(
+                        children=[
+                            dbc.DropdownMenuItem("Energy consumptio vs", header=True),
+                            dbc.DropdownMenuItem("School Enrollment", href="/correlations/schoolenrollment"),
+                            dbc.DropdownMenuItem("Deforestation", href="/correlations/deforestation"),
+                        ],
+                        nav=True,
+                        in_navbar=True,
+                        label="Correlations",
+                    )),
                     dbc.Col(dbc.NavItem(dbc.NavLink("Forecast", href="/forecast"))),
                     dbc.Col(dbc.NavItem(dbc.NavLink("About", href="/about"))),
                 ],
