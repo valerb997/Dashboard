@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
-from apps import env,ene,soc,about,forecast
+from apps import env,ene,soc,about,forecast, school_enroll, deforestation
 from app import app
 from app import server
 # BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
@@ -72,6 +72,11 @@ def render_page_content(pathname):
         return about.layout
     elif pathname =="/forecast":
         return forecast.layout
+    elif pathname =="/correlations/schoolenrollment":
+        return school_enroll.layout
+    elif pathname =="/correlations/deforestation":
+        return deforestation.layout
+
 
     # If the user tries to reach a different page, return a 404 message
 
