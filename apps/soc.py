@@ -52,7 +52,7 @@ dbc.Row(dbc.Col(html.H6("Please note that not all the data were available in the
 )
 
 def update_graph(f_dropdown):
-    chart = px.line(data_frame=df, y=f_dropdown, x=l[0])
+    chart = px.line(data_frame=df, y=f_dropdown, x=l[0],template="plotly_dark")
     return chart
 
 if __name__ == '__main__':

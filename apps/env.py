@@ -32,7 +32,14 @@ html.Div([
                                 multi=True),
                         width={'size': 3, 'order': 1}
                         )]),
-dbc.Row([dbc.Col(dcc.Graph(id='env_graph'))]),
+dbc.Row([dbc.Col(dcc.Graph(id='env_graph',
+                           figure={
+                               "layout": dict(
+                                   plot_bgcolor="#171b26",
+                                   paper_bgcolor="#171b26",
+                               ),
+                           },
+                           ))]),
 dbc.Row(dbc.Col(html.H6("Please note that not all the data were available in the same time frame: the unavailable data are equal to 0")))
 ])
 
@@ -43,7 +50,7 @@ dbc.Row(dbc.Col(html.H6("Please note that not all the data were available in the
 )
 
 def update_graph(f_dropdown):
-    chart = px.line(data_frame=df, y=f_dropdown, x=l[0])
+    chart = px.line(data_frame=df, y=f_dropdown, x=l[0], template="plotly_dark")
     return chart
 
 if __name__ == '__main__':

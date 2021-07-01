@@ -41,5 +41,5 @@ layout= \
 )
 
 def update_graph(f_dropdown):
-    chart = px.line(data_frame=df, y=f_dropdown, x=l[0])
+    chart = px.line(data_frame=df, y=f_dropdown, x=l[0],template="plotly_dark")
     return chart
