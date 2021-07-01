@@ -23,8 +23,9 @@ layout= \
                                      options=[{'label': l[1], 'value': l[1]},
                                               {'label': l[2], 'value': l[2]},
                                               {'label': l[3], 'value': l[3]},
+                                              {'label': l[4], 'value': l[4]},
                                               ],
-                                  value=l[1:4],
+                                  value=l[1:5],
                                   searchable=True,
                                 multi=True),
                         width={'size': 3, 'order': 1}
