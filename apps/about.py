@@ -11,7 +11,7 @@ chapter_1 = html.Div(
             "Open collapse",
             id="collapse-button1",
             className="mb-3",
-            color="primary",
+            color="info",
             n_clicks=0,
         ),
         dbc.Collapse(
@@ -24,10 +24,10 @@ chapter_1 = html.Div(
 chapter_2 = html.Div(
     [
         dbc.Button(
-            "Open collapse_2",
+            html.H1("Open collapse_2"),
             id="collapse-button2",
             className="mb-3",
-            color="primary",
+            color="info",
             n_clicks=0,
         ),
         dbc.Collapse(
