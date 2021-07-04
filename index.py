@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
-from apps import env,ene,soc,about,forecast, school_enroll, deforestation
+from apps import env,ene,soc,about,forecast, school_enroll, deforest, life_expect
 from app import app
 from app import server
 # BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
@@ -21,9 +21,10 @@ navbar= html.Div([
                     dbc.Col(dbc.NavItem(dbc.NavLink("Energy", href="/energy"))),
                     dbc.Col(dbc.DropdownMenu(
                         children=[
-                            dbc.DropdownMenuItem("Energy consumptio vs", header=True),
+                            dbc.DropdownMenuItem("Energy consumption vs", header=True),
                             dbc.DropdownMenuItem("School Enrollment", href="/correlations/schoolenrollment"),
                             dbc.DropdownMenuItem("Deforestation", href="/correlations/deforestation"),
+                            dbc.DropdownMenuItem("Life expectancy", href="/correlations/life_expectancy"),
                         ],
                         nav=True,
                         in_navbar=True,
@@ -75,7 +76,9 @@ def render_page_content(pathname):
     elif pathname =="/correlations/schoolenrollment":
         return school_enroll.layout
     elif pathname =="/correlations/deforestation":
-        return deforestation.layout
+        return deforest.layout
+    elif pathname =="/correlations/life_expectancy":
+        return life_expect.layout
 
 
     # If the user tries to reach a different page, return a 404 message
