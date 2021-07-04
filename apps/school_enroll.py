@@ -16,11 +16,28 @@ df=pd.read_csv(DATA_PATH.joinpath("School_enroll.csv"))
 l=df.columns.values.tolist()
 fig = px.scatter(data_frame=df, y=l[2:5], x=l[1], template="plotly_dark")
 fig.add_vline(x=128, line_width=3, line_dash="dash", line_color="green")
+complex_card = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H4("Title", className="card-title"),
+            html.H6("Card subtitle", className="card-subtitle"),
+            html.P(
+                "Some quick example text to build on the card title and make "
+                "up the bulk of the card's content.",
+                className="card-text",
+            ),
+            dbc.CardLink("Card link", href="#"),
+            dbc.CardLink("External link", href="https://google.com"),
+        ]
+    ),
+    style={"width": "18rem"},
+)
 layout= \
 html.Div([
     html.H1("Hello world!"),
     dbc.Row([dbc.Col(dcc.Graph(id='enr_graph',
-                           figure=fig
+                           figure=fig,
+                            style={'width': '150vh'}
                            # {
                            #      'data': [
                            #          {'x': df[l[1]], 'y': df[l[2]], 'type': 'scatter', 'name': 'SF'},
@@ -32,7 +49,8 @@ html.Div([
                            #         paper_bgcolor="#171b26",
                            #     ),
                            # },
-                           ))]),
+                           )),
+             dbc.Col(complex_card)]),
     #write layout here
 ])
 
