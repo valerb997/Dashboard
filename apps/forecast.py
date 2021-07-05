@@ -15,8 +15,8 @@ DATA_PATH = PATH.joinpath("../datasets").resolve()
 df=pd.read_csv(DATA_PATH.joinpath("data_to_plot.csv"))
 l=df.columns.values.tolist()
 df4=pd.read_csv(DATA_PATH.joinpath("model_estimation_IVorder.csv"))
-df4err=pd.read_csv(DATA_PATH.joinpath("errors_IVorder.csv"))
 df2=pd.read_csv(DATA_PATH.joinpath("model_estimation_IIorder.csv"))
+dfr=pd.read_csv(DATA_PATH.joinpath("model_estimation_rel.csv"))
 def generate_table(dataframe, max_rows=10):
     return html.Table([
         html.Thead(
@@ -29,46 +29,61 @@ def generate_table(dataframe, max_rows=10):
         ])
     ])
 # df4=pd.read_csv(DATA_PATH.joinpath("model_estimation_IVorder.csv"))
-fig4sGB=px.scatter(df4, x="y_test", y="y_pred_GB")
+fig4sGB=px.scatter(df4, x="y_test", y="y_pred_GB", template="plotly_dark")
 fig4sGB.update_layout(
     title_text="4th order polynomial"
 )
-fig4sLR=px.scatter(df4, x="y_test", y="y_pred_LR")
+figRsGB=px.scatter(dfr, x="y_test", y="y_pred_GB", template="plotly_dark")
+figRsGB.update_layout(
+    title_text="Relative increment (4%)"
+)
+fig4sLR=px.scatter(df4, x="y_test", y="y_pred_LR", template="plotly_dark")
 fig4sLR.update_layout(
     title_text="4th order polynomial"
 )
-fig4lGB=px.line(df4,y=["y_pred_GB","y_test"])
+figRsLR=px.scatter(dfr, x="y_test", y="y_pred_LR", template="plotly_dark")
+figRsLR.update_layout(
+    title_text="Relative increment (4%)"
+)
+fig4lGB=px.line(df4,y=["y_pred_GB","y_test"], template="plotly_dark")
 fig4lGB.update_layout(
     title_text="4th order polynomial"
 )
-fig4lLR=px.line(df4, y=["y_pred_LR","y_test"])
+figRlGB=px.line(dfr,y=["y_pred_GB","y_test"], template="plotly_dark")
+figRlGB.update_layout(
+    title_text="Relative increment (4%)"
+)
+fig4lLR=px.line(df4, y=["y_pred_LR","y_test"], template="plotly_dark")
 fig4lLR.update_layout(
     title_text="4th order polynomial"
 )
+figRlLR=px.line(dfr, y=["y_pred_LR","y_test"], template="plotly_dark")
+figRlLR.update_layout(
+    title_text="Relative increment (4%)"
+)
 
-fig2sGB=px.scatter(df2, x="y_test", y="y_pred_GB")
+fig2sGB=px.scatter(df2, x="y_test", y="y_pred_GB", template="plotly_dark")
 fig2sGB.update_layout(
     title_text="2nd order polynomial"
 )
-fig2sLR=px.scatter(df2, x="y_test", y="y_pred_LR")
+fig2sLR=px.scatter(df2, x="y_test", y="y_pred_LR", template="plotly_dark")
 fig2sLR.update_layout(
     title_text="2nd order polynomial"
 )
-fig2lGB=px.line(df2,y=["y_pred_GB","y_test"])
+fig2lGB=px.line(df2,y=["y_pred_GB","y_test"], template="plotly_dark")
 fig2lGB.update_layout(
     title_text="2nd order polynomial"
 )
-fig2lLR=px.line(df2, y=["y_pred_LR","y_test"])
+fig2lLR=px.line(df2, y=["y_pred_LR","y_test"], template="plotly_dark")
 fig2lLR.update_layout(
     title_text="2nd order polynomial"
 )
-# table4=px.scatter(df4, x=)
-# fig2s=px.scatter()
-# fig2l=px.line
-# table2=
-# figrs=px.scatter()
-# figrl=px.line()
-# tabler=
+dferr2=pd.read_csv(DATA_PATH.joinpath("errors_IIorder.csv"))
+dferr4=pd.read_csv(DATA_PATH.joinpath("errors_IVorder.csv"))
+dferrr=pd.read_csv(DATA_PATH.joinpath("errors_relative_incr.csv"))
+table4=generate_table(dferr4)
+table2=generate_table(dferr2)
+tabler=generate_table(dferrr)
 layout= \
     html.Div([
     dbc.Row(html.H1("Energy consumption forecast",
@@ -88,45 +103,62 @@ layout= \
     dbc.Row(html.H2("Model validation and errors")),
     dbc.Row(html.H4("Line plots - Linear Regression")),
         dbc.Row([
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                            figure=fig4lLR,
                            )),
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                            figure=fig2lLR,
                            )),
+            dbc.Col(dcc.Graph(
+                              figure=figRlLR,
+                              )),
             # dbc.Col(table4GB),
         ]),
 
         dbc.Row(html.H4("Line plots - Gradient Boosting")),
         dbc.Row([
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                            figure=fig4lGB,
                            )),
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                            figure=fig2lGB,
                            )),
+            dbc.Col(dcc.Graph(
+                figure=figRlGB,
+            )),
             # dbc.Col(table4GB),
         ]),
     dbc.Row(html.H4("Scatter plots - Linear Regression")),
         dbc.Row([
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                               figure=fig4sLR,
                               )),
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                               figure=fig2sLR,
                               )),
+            dbc.Col(dcc.Graph(
+                figure=figRsLR,
+            )),
             # dbc.Col(table4GB),
         ]),
         dbc.Row(html.H4("Scatter plots - Gradient Boosting")),
         dbc.Row([
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                               figure=fig4sGB,
                               )),
-            dbc.Col(dcc.Graph(id='enr_graph',
+            dbc.Col(dcc.Graph(
                               figure=fig2sGB,
                               )),
+            dbc.Col(dcc.Graph(
+                figure=figRsGB,
+            )),
         ]),
         dbc.Row(html.H4("Error tables")),
+        dbc.Row([
+            dbc.Col(table4),
+            dbc.Col(table2),
+            dbc.Col(tabler)
+        ])
 ])
 
 @app.callback(
