@@ -8,6 +8,8 @@ from app import app
 from app import server
 # BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
 # app = dash.Dash(external_stylesheets=[BS])
+
+
 navbar= html.Div([
     dbc.NavbarSimple(
     [
@@ -48,7 +50,8 @@ app.layout=\
     dcc.Location(id="url", refresh=False),
     navbar,
     html.Div(id="page-content", children=[]),
-
+dbc.Row(dbc.Card([dbc.CardBody("This page was created by Andrea Borgo and Valeria Bona, ist1100834 and ist1100833, Instituto Superior Técnico, Universidade de Lisboa")
+                  ])),
     
 
 ])
@@ -63,7 +66,6 @@ def render_page_content(pathname):
         return [
                 html.H1('Welcome to our Senegal Dashboard!',
                         style={'textAlign':'center'}),
-                # html.Img(src=app.get_asset_url('DSC_0011.jpg'))
                 ]
     elif pathname == "/environment":
         return env.layout

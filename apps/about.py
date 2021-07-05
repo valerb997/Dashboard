@@ -193,7 +193,8 @@ layout= \
     html.Div([
     html.H1("About",
             style={'textAlign':'center'}),
-    html.H6("This project has been developed by Andrea Borgo and Valeria Bona, Instituto Superior Técnico, Universidade de Lisboa"),
+    html.H6("This project has been developed by Andrea Borgo and Valeria Bona, Instituto Superior Técnico, Universidade de Lisboa",
+            style={'textAlign':'center'}),
     dbc.Row(chapter_1),
     dbc.Row(chapter_2),
     dbc.Row(chapter_3),
