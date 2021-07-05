@@ -1,12 +1,13 @@
-import pandas as pd
-import pathlib
+import docx2txt
+my_text = docx2txt.process("DESCRIPTION OF THE PROJECT 3.docx")
 
-df=pd.read_csv("life_expect.csv")
-dff=pd.DataFrame
-x,y = 103, 59
-l=[x,y]
-data = {'x' : x, 'y' : y}
-dff=pd.DataFrame(data, index=[0])  # the `index` argument is important
-df["x"]=dff["x"]
-df["y"]=dff["y"]
-df.to_csv("life_expect_new.csv")
+s="\n"
+for i in range(5):
+    s=s+"\n"
+    my_text=my_text.replace(s, '\n')
+new = list(filter(None, my_text))
+str=""
+for c in new:
+    str=str+c
+str=str.split("\n")
+print(str[1])
