@@ -16,6 +16,10 @@ df=pd.read_csv(DATA_PATH.joinpath("School_enroll.csv"))
 l=df.columns.values.tolist()
 fig = px.scatter(data_frame=df, y=l[2:5], x=l[1], template="plotly_dark")
 fig.add_vline(x=128, line_width=2, line_dash="dash", line_color="grey")
+fig.update_layout(
+    yaxis_title="School enrollment [%]",
+    legend_title="Legend",
+)
 complex_card = dbc.Card(
     dbc.CardBody(
         [
@@ -34,7 +38,7 @@ complex_card = dbc.Card(
 )
 layout= \
 html.Div([
-    html.H1("Hello world!",style={'textAlign':'center'}),
+    html.H1("School enrollment, primary",style={'textAlign':'center'}),
     dbc.Row([dbc.Col(dcc.Graph(id='enr_graph',
                            figure=fig,
                             style={'width': '150vh'}

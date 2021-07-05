@@ -12,16 +12,19 @@ PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
 df=pd.read_csv(DATA_PATH.joinpath("life_expect.csv"))
 l=df.columns.values.tolist()
-x= 102
+x= 110
 y= 60
-a=[102,102,72]
-b=[60,39,60]
+a=[x,x,72]
+b=[y,39,y]
 fig = px.scatter(data_frame=df, y=l[2], x=l[1], template="plotly_dark")
 fig.add_vline(x=x, line_width=1, line_dash="dash", line_color="grey")
 fig.add_hline(y=y,line_width=1, line_dash="dash", line_color="grey")
 fig.add_trace(go.Scatter(x=a, y=b,
                     mode='markers',
                     name='point'))
+fig.update_layout(
+    legend_title="Legend",
+)
 complex_card = dbc.Card(
     dbc.CardBody(
         [
@@ -40,7 +43,7 @@ complex_card = dbc.Card(
 )
 layout= \
 html.Div([
-    html.H1("Hello world!", style={'textAlign':'center'}),
+    html.H1("Life expectancy", style={'textAlign':'center'}),
     dbc.Row([dbc.Col(dcc.Graph(id='enr_graph',
                            figure=fig,
                             style={'width': '150vh'}

@@ -15,6 +15,9 @@ DATA_PATH = PATH.joinpath("../datasets").resolve()
 df=pd.read_csv(DATA_PATH.joinpath("deforest.csv"))
 l=df.columns.values.tolist()
 fig = px.scatter(data_frame=df, y=l[2], x=l[1], template="plotly_dark")
+fig.update_layout(
+    legend_title="Legend",
+)
 complex_card = dbc.Card(
     dbc.CardBody(
         [
@@ -33,7 +36,7 @@ complex_card = dbc.Card(
 )
 layout= \
 html.Div([
-    html.H1("Hello world!", style={'textAlign':'center'}),
+    html.H1("Deforestation", style={'textAlign':'center'}),
     dbc.Row([dbc.Col(dcc.Graph(id='enr_graph',
                            figure=fig,
                             style={'width': '150vh'}

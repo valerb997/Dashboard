@@ -40,6 +40,7 @@ dbc.Row([dbc.Col(dcc.Dropdown(id='f_dropdown', placeholder='Select a Feature...'
                                               {'label': l[16], 'value': l[16]},
                                               ],
                                   value=l[1],
+                                  style={'backgroundColor': 'black', 'color': 'black'},
                                   searchable=True,
                                 multi=True),
                         width={'size': 3, 'order': 1}

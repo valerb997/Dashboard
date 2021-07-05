@@ -28,6 +28,7 @@ html.Div([
                                               {'label': l[4], 'value': l[4]},
                                               ],
                                   value=l[1],
+                                  style={'backgroundColor': 'black', 'color': 'black'},
                                   searchable=True,
                                 multi=True),
                         width={'size': 3, 'order': 1}

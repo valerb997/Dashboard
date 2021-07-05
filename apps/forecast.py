@@ -27,8 +27,8 @@ layout= \
                                               ],
                                   value=l[1:5],
                                   searchable=True,
+                                  style={'backgroundColor': 'black', 'color': 'black'},
                                 multi=True),
-                        width={'size': 3, 'order': 1}
                         )]),
     dbc.Row(dcc.Graph(id='fore_graph')),
 ])
@@ -42,4 +42,8 @@ layout= \
 
 def update_graph(f_dropdown):
     chart = px.line(data_frame=df, y=f_dropdown, x=l[0],template="plotly_dark")
+    chart.update_layout(
+        yaxis_title="Electricity consumption [GWh]",
+        legend_title="Legend",
+    )
     return chart
