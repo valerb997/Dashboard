@@ -14,7 +14,61 @@ PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
 df=pd.read_csv(DATA_PATH.joinpath("data_to_plot.csv"))
 l=df.columns.values.tolist()
+df4=pd.read_csv(DATA_PATH.joinpath("model_estimation_IVorder.csv"))
+df4err=pd.read_csv(DATA_PATH.joinpath("errors_IVorder.csv"))
+df2=pd.read_csv(DATA_PATH.joinpath("model_estimation_IIorder.csv"))
+def generate_table(dataframe, max_rows=10):
+    return html.Table([
+        html.Thead(
+            html.Tr([html.Th(col) for col in dataframe.columns])
+        ),
+        html.Tbody([
+            html.Tr([
+                html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+            ]) for i in range(min(len(dataframe), max_rows))
+        ])
+    ])
+# df4=pd.read_csv(DATA_PATH.joinpath("model_estimation_IVorder.csv"))
+fig4sGB=px.scatter(df4, x="y_test", y="y_pred_GB")
+fig4sGB.update_layout(
+    title_text="4th order polynomial"
+)
+fig4sLR=px.scatter(df4, x="y_test", y="y_pred_LR")
+fig4sLR.update_layout(
+    title_text="4th order polynomial"
+)
+fig4lGB=px.line(df4,y=["y_pred_GB","y_test"])
+fig4lGB.update_layout(
+    title_text="4th order polynomial"
+)
+fig4lLR=px.line(df4, y=["y_pred_LR","y_test"])
+fig4lLR.update_layout(
+    title_text="4th order polynomial"
+)
 
+fig2sGB=px.scatter(df2, x="y_test", y="y_pred_GB")
+fig2sGB.update_layout(
+    title_text="2nd order polynomial"
+)
+fig2sLR=px.scatter(df2, x="y_test", y="y_pred_LR")
+fig2sLR.update_layout(
+    title_text="2nd order polynomial"
+)
+fig2lGB=px.line(df2,y=["y_pred_GB","y_test"])
+fig2lGB.update_layout(
+    title_text="2nd order polynomial"
+)
+fig2lLR=px.line(df2, y=["y_pred_LR","y_test"])
+fig2lLR.update_layout(
+    title_text="2nd order polynomial"
+)
+# table4=px.scatter(df4, x=)
+# fig2s=px.scatter()
+# fig2l=px.line
+# table2=
+# figrs=px.scatter()
+# figrl=px.line()
+# tabler=
 layout= \
     html.Div([
     dbc.Row(html.H1("Energy consumption forecast",
@@ -31,6 +85,48 @@ layout= \
                                 multi=True),
                         )]),
     dbc.Row(dcc.Graph(id='fore_graph')),
+    dbc.Row(html.H2("Model validation and errors")),
+    dbc.Row(html.H4("Line plots - Linear Regression")),
+        dbc.Row([
+            dbc.Col(dcc.Graph(id='enr_graph',
+                           figure=fig4lLR,
+                           )),
+            dbc.Col(dcc.Graph(id='enr_graph',
+                           figure=fig2lLR,
+                           )),
+            # dbc.Col(table4GB),
+        ]),
+
+        dbc.Row(html.H4("Line plots - Gradient Boosting")),
+        dbc.Row([
+            dbc.Col(dcc.Graph(id='enr_graph',
+                           figure=fig4lGB,
+                           )),
+            dbc.Col(dcc.Graph(id='enr_graph',
+                           figure=fig2lGB,
+                           )),
+            # dbc.Col(table4GB),
+        ]),
+    dbc.Row(html.H4("Scatter plots - Linear Regression")),
+        dbc.Row([
+            dbc.Col(dcc.Graph(id='enr_graph',
+                              figure=fig4sLR,
+                              )),
+            dbc.Col(dcc.Graph(id='enr_graph',
+                              figure=fig2sLR,
+                              )),
+            # dbc.Col(table4GB),
+        ]),
+        dbc.Row(html.H4("Scatter plots - Gradient Boosting")),
+        dbc.Row([
+            dbc.Col(dcc.Graph(id='enr_graph',
+                              figure=fig4sGB,
+                              )),
+            dbc.Col(dcc.Graph(id='enr_graph',
+                              figure=fig2sGB,
+                              )),
+        ]),
+        dbc.Row(html.H4("Error tables")),
 ])
 
 @app.callback(
