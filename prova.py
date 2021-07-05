@@ -10,4 +10,5 @@ str=""
 for c in new:
     str=str+c
 str=str.split("\n")
-print(str[4])
+#25
+print(str[75])
