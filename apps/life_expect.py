@@ -12,10 +12,10 @@ PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
 df=pd.read_csv(DATA_PATH.joinpath("life_expect.csv"))
 l=df.columns.values.tolist()
-x= 103
-y= 59
-a=[103,103,72]
-b=[59,39,59]
+x= 102
+y= 60
+a=[102,102,72]
+b=[60,39,60]
 fig = px.scatter(data_frame=df, y=l[2], x=l[1], template="plotly_dark")
 fig.add_vline(x=x, line_width=1, line_dash="dash", line_color="grey")
 fig.add_hline(y=y,line_width=1, line_dash="dash", line_color="grey")
