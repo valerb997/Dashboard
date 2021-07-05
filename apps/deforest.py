@@ -21,15 +21,17 @@ fig.update_layout(
 complex_card = dbc.Card(
     dbc.CardBody(
         [
-            html.H4("Title", className="card-title"),
-            html.H6("Card subtitle", className="card-subtitle"),
+            html.H4("About this plot", className="card-title"),
             html.P(
-                "Some quick example text to build on the card title and make "
-                "up the bulk of the card's content.",
+                "This scatter plot shows a very high negative correlation between electricity consumption "
+                "and the loss of forest area. A useful method to evaluate the degree of correlation between "
+                " the two variables is by estimating the correlation coefficients (in this case the Pearson, the "
+                "Spearman and the Kendall coefficients, which correspond to -0.939, -0.991 and -0.949 respectively). "
+                " These three factors use different methods to estimate the correlation between the two variables and all of them show results above"
+                " 90%, meaning that there is a strong link between energy consumption and deforestation ",
                 className="card-text",
             ),
-            dbc.CardLink("Card link", href="#"),
-            dbc.CardLink("External link", href="https://google.com"),
+            dbc.CardLink("Global Forest Watch", href="https://www.globalforestwatch.org/dashboards/country/SEN/?category=summary&dashboardPrompts=eyJzaG93UHJvbXB0cyI6dHJ1ZSwicHJvbXB0c1ZpZXdlZCI6W10sInNldHRpbmdzIjp7Im9wZW4iOmZhbHNlLCJzdGVwSW5kZXgiOjAsInN0ZXBzS2V5IjoiIn0sIm9wZW4iOnRydWUsInN0ZXBzS2V5IjoiZG93bmxvYWREYXNoYm9hcmRTdGF0cyJ9&location=WyJjb3VudHJ5IiwiU0VOIl0%3D&map=eyJjZW50ZXIiOnsibGF0IjoxMy44NjAzNDQ4Njk2MTM2NjIsImxuZyI6LTEyLjg4NjAxNzI1MDU4NzY3Mn0sInpvb20iOjUuMjE0NjY1NjE3NDgwMywiY2FuQm91bmQiOmZhbHNlLCJkYXRhc2V0cyI6W3sib3BhY2l0eSI6MC43LCJ2aXNpYmlsaXR5Ijp0cnVlLCJkYXRhc2V0IjoicHJpbWFyeS1mb3Jlc3RzIiwibGF5ZXJzIjpbInByaW1hcnktZm9yZXN0cy0yMDAxIl19LHsiZGF0YXNldCI6InBvbGl0aWNhbC1ib3VuZGFyaWVzIiwibGF5ZXJzIjpbImRpc3B1dGVkLXBvbGl0aWNhbC1ib3VuZGFyaWVzIiwicG9saXRpY2FsLWJvdW5kYXJpZXMiXSwiYm91bmRhcnkiOnRydWUsIm9wYWNpdHkiOjEsInZpc2liaWxpdHkiOnRydWV9LHsiZGF0YXNldCI6InRyZWUtY292ZXItbG9zcyIsImxheWVycyI6WyJ0cmVlLWNvdmVyLWxvc3MiXSwib3BhY2l0eSI6MSwidmlzaWJpbGl0eSI6dHJ1ZSwidGltZWxpbmVQYXJhbXMiOnsic3RhcnREYXRlIjoiMjAwMi0wMS0wMSIsImVuZERhdGUiOiIyMDIwLTEyLTMxIiwidHJpbUVuZERhdGUiOiIyMDIwLTEyLTMxIn0sInBhcmFtcyI6eyJ0aHJlc2hvbGQiOjMwLCJ2aXNpYmlsaXR5Ijp0cnVlfX1dfQ%3D%3D"),
         ]
     ),
     style={"width": "18rem"},

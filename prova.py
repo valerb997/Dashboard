@@ -10,4 +10,4 @@ str=""
 for c in new:
     str=str+c
 str=str.split("\n")
-print(str[1])
+print(str[4])

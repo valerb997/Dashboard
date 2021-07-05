@@ -28,15 +28,16 @@ fig.update_layout(
 complex_card = dbc.Card(
     dbc.CardBody(
         [
-            html.H4("Title", className="card-title"),
-            html.H6("Card subtitle", className="card-subtitle"),
+            html.H4("About this plot", className="card-title"),
             html.P(
-                "Some quick example text to build on the card title and make "
-                "up the bulk of the card's content.",
+                "Similarly to the school enrollment scatter plot, also between electricity consumption and "
+                "life expectancy we can define a critical value which determines a change of the curve's slope."
+                "In fact, below the average consumption of 110 kWh/capita, life expectancy can't exceed 60 years, "
+                "while above this threshold people are expected to live more, but more consumption is required to"
+                " significantly increase the years (after this point the curve is less steep) ",
                 className="card-text",
             ),
-            dbc.CardLink("Card link", href="#"),
-            dbc.CardLink("External link", href="https://google.com"),
+            dbc.CardLink("World Bank Database", href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=SN"),
         ]
     ),
     style={"width": "18rem"},

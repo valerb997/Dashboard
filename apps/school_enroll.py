@@ -23,15 +23,15 @@ fig.update_layout(
 complex_card = dbc.Card(
     dbc.CardBody(
         [
-            html.H4("Title", className="card-title"),
-            html.H6("Card subtitle", className="card-subtitle"),
+            html.H4("About this plot", className="card-title"),
             html.P(
-                "Some quick example text to build on the card title and make "
-                "up the bulk of the card's content.",
+                "If we plot a school enrollment vs GWh/capita scatter plot "
+                "it can be seen that school enrolment sharply grows between 100 and 130 kWh/capita,"
+                " then the growth gets milder for higher values of electricity consumption. Thus, we can define a “critical consumption” (at around 128 kWh/capita), which is the minimum energy required to allow a great percentage of children enrolled to primary school."
+                "In addition to this, a higher electricity consumption guarantees better gender parity: at low consumptions male children are more likely to enrol to school with respect to females, while after the critical point the percentage is more homogeneous.",
                 className="card-text",
             ),
-            dbc.CardLink("Card link", href="#"),
-            dbc.CardLink("External link", href="https://google.com"),
+            dbc.CardLink("World Bank Database", href="https://data.worldbank.org/indicator/SE.PRM.ENRR?locations=SN"),
         ]
     ),
     style={"width": "18rem"},
