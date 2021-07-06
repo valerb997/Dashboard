@@ -9,7 +9,15 @@ from app import server
 # BS = "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
 # app = dash.Dash(external_stylesheets=[BS])
 
-
+import base64
+bus_png = 'DSC_0011.jpg'
+bus_base64 = base64.b64encode(open(bus_png, 'rb').read()).decode('ascii')
+ppl_png = 'DSC_0079.jpg'
+ppl_base64 = base64.b64encode(open(ppl_png, 'rb').read()).decode('ascii')
+ferry_png = 'DSC_0147.jpg'
+ferry_base64 = base64.b64encode(open(ferry_png, 'rb').read()).decode('ascii')
+flag_png = 'mappa_senegal_2.png'
+flag_base64 = base64.b64encode(open(flag_png, 'rb').read()).decode('ascii')
 navbar= html.Div([
     dbc.NavbarSimple(
     [
@@ -66,6 +74,12 @@ def render_page_content(pathname):
         return [
                 html.H1('Welcome to our Senegal Dashboard!',
                         style={'textAlign':'center'}),
+            html.Div([
+                html.Img(src='data:image/png;base64,{}'.format(flag_base64), width="1500",height="600"),
+                dbc.Row([dbc.Col(html.Img(src='data:image/png;base64,{}'.format(bus_base64), width="1000", height="600")),
+                        dbc.Col(html.Img(src='data:image/png;base64,{}'.format(ppl_base64), width="1000", height="600"))
+                        ]),
+                html.Img(src='data:image/png;base64,{}'.format(ferry_base64), width="1000", height="600")])
                 ]
     elif pathname == "/environment":
         return env.layout
