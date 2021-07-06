@@ -79,7 +79,8 @@ def render_page_content(pathname):
                 dbc.Row([dbc.Col(html.Img(src='data:image/png;base64,{}'.format(bus_base64), width="1000", height="600")),
                         dbc.Col(html.Img(src='data:image/png;base64,{}'.format(ppl_base64), width="1000", height="600"))
                         ]),
-                html.Img(src='data:image/png;base64,{}'.format(ferry_base64), width="1000", height="600")])
+                html.Img(src='data:image/png;base64,{}'.format(ferry_base64), width="1000", height="600")],
+            style={'textAlign': 'center'})
                 ]
     elif pathname == "/environment":
         return env.layout
