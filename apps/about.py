@@ -20,7 +20,7 @@ str=str.split("\n")
 chapter_1 = html.Div(
     [
         dbc.Button(
-            html.H5(html.B("Description of the project 3")),
+            html.H5(html.B("Description of project 3")),
             id="collapse-button1",
             className="mb-3",
             color="primary",
