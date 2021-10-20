@@ -6,7 +6,7 @@ from apps import env,ene,soc
 from app import app
 from app import server
 import docx2txt
-my_text = docx2txt.process("DESCRIPTION OF THE PROJECT 3.docx")
+my_text = docx2txt.process("DESCRIPTION OF PROJECT 3.docx")
 
 s="\n"
 for i in range(5):
